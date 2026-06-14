@@ -2,24 +2,36 @@ package traduccionfrases.api.dominio.entidades;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.IdClass;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
 @Entity
+
 @Table(name = "traduccion")
 public class Traduccion {
 
-    @Id
+    
     @ManyToOne
     @JoinColumn(name = "ididioma", referencedColumnName = "id")
     private Idioma idioma;
 
-    @Id
+    
     @ManyToOne
     @JoinColumn(name = "idfrase", referencedColumnName = "id")
     private Frase frase;
+
+	@Id
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "secuencia_traduccion")
+    @SequenceGenerator(name = "secuencia_traduccion", sequenceName = "secuencia_traduccion", allocationSize = 1)
+
+    @Column(name = "id")
+    private int id;
 
     @Column(name = "traduccion", length = 255, nullable = false)
     private String texto;

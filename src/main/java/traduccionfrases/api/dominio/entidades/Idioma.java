@@ -13,11 +13,11 @@ import jakarta.persistence.Table;
 public class Idioma {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "secuencia_idioma") // Generación automática del ID utilizando una secuencia
-    @SequenceGenerator(name = "secuencia_idioma", sequenceName = "secuencia_idioma", allocationSize = 1) // Configuración de la secuencia para generar IDs únicos
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "secuencia_idioma") 
+    @SequenceGenerator(name = "secuencia_idioma", sequenceName = "secuencia_idioma", allocationSize = 1) 
 
-    @Column(name = "id") // Columna para el ID del idioma
-    private int id; // Campo para almacenar el ID del idioma
+    @Column(name = "id") 
+    private int id; 
 
     @Column(name = "idioma", length = 100, nullable = false, unique = true)
     private String nombre;
